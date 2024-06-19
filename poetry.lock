@@ -258,6 +258,38 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
+name = "boto3"
+version = "1.34.129"
+description = "The AWS SDK for Python"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+botocore = ">=1.34.129,<1.35.0"
+jmespath = ">=0.7.1,<2.0.0"
+s3transfer = ">=0.10.0,<0.11.0"
+
+[package.extras]
+crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
+
+[[package]]
+name = "botocore"
+version = "1.34.129"
+description = "Low-level, data-driven core of boto 3."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+jmespath = ">=0.7.1,<2.0.0"
+python-dateutil = ">=2.1,<3.0.0"
+urllib3 = {version = ">=1.25.4,<2.2.0 || >2.2.0,<3", markers = "python_version >= \"3.10\""}
+
+[package.extras]
+crt = ["awscrt (==0.20.11)"]
+
+[[package]]
 name = "cachetools"
 version = "5.3.3"
 description = "Extensible memoizing collections and decorators"
@@ -304,6 +336,34 @@ python-versions = ">=3.7"
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
+name = "cloudpickle"
+version = "3.0.0"
+description = "Pickler class to extend the standard pickle.Pickler functionality"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "cohere"
+version = "5.5.8"
+description = ""
+category = "main"
+optional = false
+python-versions = "<4.0,>=3.8"
+
+[package.dependencies]
+boto3 = ">=1.34.0,<2.0.0"
+fastavro = ">=1.9.4,<2.0.0"
+httpx = ">=0.21.2"
+httpx-sse = ">=0.4.0,<0.5.0"
+parameterized = ">=0.9.0,<0.10.0"
+pydantic = ">=1.9.2"
+requests = ">=2.0.0,<3.0.0"
+tokenizers = ">=0.15,<1"
+types-requests = ">=2.0.0,<3.0.0"
+typing_extensions = ">=4.0.0"
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
@@ -324,6 +384,126 @@ traitlets = ">=4"
 
 [package.extras]
 test = ["pytest"]
+
+[[package]]
+name = "contourpy"
+version = "1.2.1"
+description = "Python library for calculating contours of 2D quadrilateral grids"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+numpy = ">=1.20"
+
+[package.extras]
+docs = ["furo", "sphinx (>=7.2)", "sphinx-copybutton"]
+bokeh = ["bokeh", "selenium"]
+mypy = ["contourpy", "docutils-stubs", "mypy (==1.8.0)", "types-pillow"]
+test = ["contourpy", "matplotlib", "pillow"]
+test-no-images = ["pytest", "pytest-cov", "pytest-xdist", "wurlitzer"]
+
+[[package]]
+name = "cycler"
+version = "0.12.1"
+description = "Composable style cycles"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+docs = ["ipython", "matplotlib", "numpydoc", "sphinx"]
+tests = ["pytest", "pytest-cov", "pytest-xdist"]
+
+[[package]]
+name = "dask"
+version = "2024.6.0"
+description = "Parallel PyData with Task Scheduling"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+click = ">=8.1"
+cloudpickle = ">=1.5.0"
+dask = {version = "*", extras = ["array"], optional = true, markers = "extra == \"dataframe\""}
+dask-expr = {version = ">=1.1,<1.2", optional = true, markers = "extra == \"dataframe\""}
+fsspec = ">=2021.09.0"
+importlib-metadata = {version = ">=4.13.0", markers = "python_version < \"3.12\""}
+numpy = {version = ">=1.21", optional = true, markers = "extra == \"array\""}
+packaging = ">=20.0"
+pandas = {version = ">=1.3", optional = true, markers = "extra == \"dataframe\""}
+partd = ">=1.2.0"
+pyyaml = ">=5.3.1"
+toolz = ">=0.10.0"
+
+[package.extras]
+array = ["numpy (>=1.21)"]
+complete = ["dask", "pyarrow (>=7.0)", "pyarrow-hotfix", "lz4 (>=4.3.2)"]
+dataframe = ["dask", "pandas (>=1.3)", "dask-expr (>=1.1,<1.2)"]
+diagnostics = ["bokeh (>=2.4.2)", "jinja2 (>=2.10.3)"]
+distributed = ["distributed (==2024.6.0)"]
+test = ["pandas", "pytest", "pytest-cov", "pytest-rerunfailures", "pytest-timeout", "pytest-xdist", "pre-commit"]
+
+[[package]]
+name = "dask-expr"
+version = "1.1.3"
+description = "High Level Expressions for Dask"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+dask = "2024.6.0"
+pandas = ">=2"
+pyarrow = ">=7.0.0"
+
+[[package]]
+name = "dask-glm"
+version = "0.3.2"
+description = "Generalized Linear Models with Dask"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+cloudpickle = ">=0.2.2"
+dask = {version = "*", extras = ["array"]}
+distributed = "*"
+multipledispatch = ">=0.4.9"
+scikit-learn = ">=0.18"
+scipy = ">=0.18.1"
+sparse = ">=0.7.0"
+
+[package.extras]
+docs = ["jupyter", "nbsphinx", "notebook", "numpydoc", "sphinx", "sphinx-rtd-theme"]
+
+[[package]]
+name = "dask-ml"
+version = "2024.4.4"
+description = "A library for distributed and parallel machine learning"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+dask = {version = ">=2.4.0", extras = ["array", "dataframe"]}
+dask-glm = ">=0.2.0"
+distributed = ">=2.4.0"
+multipledispatch = ">=0.4.9"
+numba = ">=0.51.0"
+numpy = ">=1.20.0"
+packaging = "*"
+pandas = ">=0.24.2"
+scikit-learn = ">=1.2.0"
+scipy = "*"
+
+[package.extras]
+complete = ["dask-xgboost", "xgboost"]
+dev = ["black", "coverage", "flake8", "isort", "nbsphinx", "numpydoc", "pytest", "pytest-cov", "pytest-mock", "sphinx", "sphinx-gallery", "sphinx-rtd-theme"]
+docs = ["nbsphinx", "numpydoc", "sphinx", "sphinx-gallery", "sphinx-rtd-theme"]
+test = ["black", "coverage", "flake8", "isort", "pytest", "pytest-cov", "pytest-mock"]
+xgboost = ["dask-xgboost", "xgboost"]
 
 [[package]]
 name = "datasets"
@@ -403,6 +583,31 @@ graph = ["objgraph (>=1.7.2)"]
 profile = ["gprof2dot (>=2022.7.29)"]
 
 [[package]]
+name = "distributed"
+version = "2024.6.0"
+description = "Distributed scheduler for Dask"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+click = ">=8.0"
+cloudpickle = ">=1.5.0"
+dask = "2024.6.0"
+jinja2 = ">=2.10.3"
+locket = ">=1.0.0"
+msgpack = ">=1.0.0"
+packaging = ">=20.0"
+psutil = ">=5.7.2"
+pyyaml = ">=5.3.1"
+sortedcontainers = ">=2.0.5"
+tblib = ">=1.6.0"
+toolz = ">=0.10.0"
+tornado = ">=6.0.4"
+urllib3 = ">=1.24.3"
+zict = ">=3.0.0"
+
+[[package]]
 name = "distro"
 version = "1.9.0"
 description = "Distro - an OS platform information API"
@@ -465,6 +670,20 @@ python-versions = ">=3.5"
 tests = ["asttokens (>=2.1.0)", "ipython", "pytest", "coverage", "coverage-enable-subprocess", "littleutils", "rich"]
 
 [[package]]
+name = "fastavro"
+version = "1.9.4"
+description = "Fast read/write of AVRO files"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+codecs = ["cramjam", "zstandard", "lz4"]
+snappy = ["cramjam"]
+zstandard = ["zstandard"]
+lz4 = ["lz4"]
+
+[[package]]
 name = "fastjsonschema"
 version = "2.20.0"
 description = "Fastest Python implementation of JSON schema"
@@ -487,6 +706,28 @@ python-versions = ">=3.8"
 docs = ["furo (>=2023.9.10)", "sphinx-autodoc-typehints (>=1.25.2)", "sphinx (>=7.2.6)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", "pytest-asyncio (>=0.21)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest-timeout (>=2.2)", "pytest (>=7.4.3)"]
 typing = ["typing-extensions (>=4.8)"]
+
+[[package]]
+name = "fonttools"
+version = "4.53.0"
+description = "Tools to manipulate font files"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+all = ["fs (>=2.2.0,<3)", "lxml (>=4.0)", "zopfli (>=0.1.4)", "lz4 (>=1.7.4.2)", "pycairo", "matplotlib", "sympy", "skia-pathops (>=0.5.0)", "uharfbuzz (>=0.23.0)", "brotlicffi (>=0.8.0)", "scipy", "brotli (>=1.0.1)", "munkres", "unicodedata2 (>=15.1.0)", "xattr"]
+graphite = ["lz4 (>=1.7.4.2)"]
+interpolatable = ["pycairo", "scipy", "munkres"]
+lxml = ["lxml (>=4.0)"]
+pathops = ["skia-pathops (>=0.5.0)"]
+plot = ["matplotlib"]
+repacker = ["uharfbuzz (>=0.23.0)"]
+symfont = ["sympy"]
+type1 = ["xattr"]
+ufo = ["fs (>=2.2.0,<3)"]
+unicode = ["unicodedata2 (>=15.1.0)"]
+woff = ["zopfli (>=0.1.4)", "brotlicffi (>=0.8.0)", "brotli (>=1.0.1)"]
 
 [[package]]
 name = "fqdn"
@@ -614,6 +855,14 @@ brotli = ["brotli", "brotlicffi"]
 cli = ["click (>=8.0.0,<9.0.0)", "pygments (>=2.0.0,<3.0.0)", "rich (>=10,<14)"]
 http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (>=1.0.0,<2.0.0)"]
+
+[[package]]
+name = "httpx-sse"
+version = "0.4.0"
+description = "Consume Server-Sent Event (SSE) messages with HTTPX."
+category = "main"
+optional = false
+python-versions = ">=3.8"
 
 [[package]]
 name = "huggingface-hub"
@@ -801,6 +1050,14 @@ description = "Fast iterable JSON parser."
 category = "main"
 optional = false
 python-versions = ">=3.8"
+
+[[package]]
+name = "jmespath"
+version = "1.0.1"
+description = "JSON Matching Expressions"
+category = "main"
+optional = false
+python-versions = ">=3.7"
 
 [[package]]
 name = "joblib"
@@ -1087,6 +1344,30 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "kiwisolver"
+version = "1.4.5"
+description = "A fast implementation of the Cassowary constraint solver"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "llvmlite"
+version = "0.43.0"
+description = "lightweight wrapper around basic LLVM functionality"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[[package]]
+name = "locket"
+version = "1.0.0"
+description = "File-based locks for Python on Linux and Windows"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
 name = "markdown-it-py"
 version = "3.0.0"
 description = "Python port of markdown-it. Markdown parsing, done right!"
@@ -1114,6 +1395,28 @@ description = "Safely add untrusted strings to HTML/XML markup."
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "matplotlib"
+version = "3.9.0"
+description = "Python plotting package"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+contourpy = ">=1.0.1"
+cycler = ">=0.10"
+fonttools = ">=4.22.0"
+kiwisolver = ">=1.3.1"
+numpy = ">=1.23"
+packaging = ">=20.0"
+pillow = ">=8"
+pyparsing = ">=2.3.1"
+python-dateutil = ">=2.7"
+
+[package.extras]
+dev = ["meson-python (>=0.13.1)", "numpy (>=1.25)", "pybind11 (>=2.6)", "setuptools_scm (>=7)", "setuptools (>=64)"]
 
 [[package]]
 name = "matplotlib-inline"
@@ -1157,12 +1460,28 @@ gmpy = ["gmpy2 (>=2.1.0a4)"]
 tests = ["pytest (>=4.6)"]
 
 [[package]]
+name = "msgpack"
+version = "1.0.8"
+description = "MessagePack serializer"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "multidict"
 version = "6.0.5"
 description = "multidict implementation"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "multipledispatch"
+version = "1.0.0"
+description = "Multiple dispatch"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "multiprocess"
@@ -1302,6 +1621,18 @@ jupyter-server = ">=1.8,<3"
 
 [package.extras]
 test = ["pytest", "pytest-console-scripts", "pytest-jupyter", "pytest-tornasync"]
+
+[[package]]
+name = "numba"
+version = "0.60.0"
+description = "compiling Python code using LLVM"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+llvmlite = ">=0.43.0dev0,<0.44"
+numpy = ">=1.22,<2.1"
 
 [[package]]
 name = "numpy"
@@ -1506,6 +1837,17 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
+name = "parameterized"
+version = "0.9.0"
+description = "Parameterized testing with any Python test framework"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+dev = ["jinja2"]
+
+[[package]]
 name = "parso"
 version = "0.8.4"
 description = "A Python Parser"
@@ -1516,6 +1858,21 @@ python-versions = ">=3.6"
 [package.extras]
 qa = ["flake8 (==5.0.4)", "mypy (==0.971)", "types-setuptools (==67.2.0.1)"]
 testing = ["docopt", "pytest"]
+
+[[package]]
+name = "partd"
+version = "1.4.2"
+description = "Appendable key-value storage"
+category = "main"
+optional = false
+python-versions = ">=3.9"
+
+[package.dependencies]
+locket = "*"
+toolz = "*"
+
+[package.extras]
+complete = ["numpy (>=1.20.0)", "pandas (>=1.3)", "pyzmq", "blosc"]
 
 [[package]]
 name = "pexpect"
@@ -1736,6 +2093,17 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pyparsing"
+version = "3.1.2"
+description = "pyparsing module - Classes and methods to define and execute parsing grammars"
+category = "main"
+optional = false
+python-versions = ">=3.6.8"
+
+[package.extras]
+diagrams = ["railroad-diagrams", "jinja2"]
+
+[[package]]
 name = "pypdf2"
 version = "3.0.1"
 description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
@@ -1940,6 +2308,20 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
+name = "s3transfer"
+version = "0.10.1"
+description = "An Amazon S3 Transfer Manager"
+category = "main"
+optional = false
+python-versions = ">= 3.8"
+
+[package.dependencies]
+botocore = ">=1.33.2,<2.0a.0"
+
+[package.extras]
+crt = ["botocore[crt] (>=1.33.2,<2.0a.0)"]
+
+[[package]]
 name = "safetensors"
 version = "0.4.3"
 description = ""
@@ -2043,6 +2425,14 @@ dev = ["datasets", "accelerate (>=0.20.3)", "pre-commit", "pytest", "ruff (>=0.3
 train = ["datasets", "accelerate (>=0.20.3)"]
 
 [[package]]
+name = "sentencepiece"
+version = "0.2.0"
+description = "SentencePiece python wrapper"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -2067,12 +2457,39 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "sortedcontainers"
+version = "2.4.0"
+description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "soupsieve"
 version = "2.5"
 description = "A modern CSS selector implementation for Beautiful Soup."
 category = "main"
 optional = false
 python-versions = ">=3.8"
+
+[[package]]
+name = "sparse"
+version = "0.15.4"
+description = "Sparse n-dimensional arrays for the PyData ecosystem"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+numba = ">=0.49"
+numpy = ">=1.17"
+scipy = ">=0.19"
+
+[package.extras]
+all = ["sparse", "matrepr"]
+docs = ["sphinx", "sphinx-rtd-theme"]
+tests = ["dask", "pytest (>=3.5)", "pytest-cov", "pre-commit"]
+tox = ["sparse", "tox"]
 
 [[package]]
 name = "stack-data"
@@ -2134,6 +2551,14 @@ python-versions = ">=3.8"
 
 [package.dependencies]
 mpmath = ">=1.1.0,<1.4.0"
+
+[[package]]
+name = "tblib"
+version = "3.0.0"
+description = "Traceback serialization library."
+category = "main"
+optional = false
+python-versions = ">=3.8"
 
 [[package]]
 name = "terminado"
@@ -2388,6 +2813,17 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
+name = "types-requests"
+version = "2.32.0.20240602"
+description = "Typing stubs for requests"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+urllib3 = ">=2"
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -2531,6 +2967,14 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [[package]]
+name = "zict"
+version = "3.0.0"
+description = "Mutable mapping tools"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "zipp"
 version = "3.19.2"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -2545,7 +2989,7 @@ test = ["pytest (>=6,<8.1.0 || >=8.2.0)", "pytest-checkdocs (>=2.4)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "1053d41a0610fc45a4491650d7a96f88dab826d0291d4cb8933371bca6d715d6"
+content-hash = "e207543f79e02456666f940b3655be4bf0d11282ec2a509a6d6de84975434730"
 
 [metadata.files]
 aiohttp = []
@@ -2588,13 +3032,23 @@ babel = []
 beautifulsoup4 = []
 bleach = []
 blinker = []
+boto3 = []
+botocore = []
 cachetools = []
 certifi = []
 cffi = []
 charset-normalizer = []
 click = []
+cloudpickle = []
+cohere = []
 colorama = []
 comm = []
+contourpy = []
+cycler = []
+dask = []
+dask-expr = []
+dask-glm = []
+dask-ml = []
 datasets = []
 debugpy = []
 decorator = [
@@ -2606,12 +3060,15 @@ defusedxml = [
     {file = "defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69"},
 ]
 dill = []
+distributed = []
 distro = []
 evaluate = []
 exceptiongroup = []
 executing = []
+fastavro = []
 fastjsonschema = []
 filelock = []
+fonttools = []
 fqdn = []
 frozenlist = []
 fsspec = []
@@ -2620,6 +3077,7 @@ gitpython = []
 h11 = []
 httpcore = []
 httpx = []
+httpx-sse = []
 huggingface-hub = []
 idna = []
 importlib-metadata = []
@@ -2630,6 +3088,7 @@ isoduration = []
 jedi = []
 jinja2 = []
 jiter = []
+jmespath = []
 joblib = []
 json5 = []
 jsonpointer = []
@@ -2651,13 +3110,19 @@ jupyterlab = []
 jupyterlab-pygments = []
 jupyterlab-server = []
 jupyterlab-widgets = []
+kiwisolver = []
+llvmlite = []
+locket = []
 markdown-it-py = []
 markupsafe = []
+matplotlib = []
 matplotlib-inline = []
 mdurl = []
 mistune = []
 mpmath = []
+msgpack = []
 multidict = []
+multipledispatch = []
 multiprocess = []
 nbclient = []
 nbconvert = []
@@ -2666,6 +3131,7 @@ nest-asyncio = []
 networkx = []
 notebook = []
 notebook-shim = []
+numba = []
 numpy = []
 nvidia-cublas-cu12 = []
 nvidia-cuda-cupti-cu12 = []
@@ -2684,7 +3150,9 @@ overrides = []
 packaging = []
 pandas = []
 pandocfilters = []
+parameterized = []
 parso = []
+partd = []
 pexpect = []
 pillow = []
 pinecone-client = []
@@ -2710,6 +3178,7 @@ pydantic-core = []
 pydeck = []
 pygments = []
 pympler = []
+pyparsing = []
 pypdf2 = []
 python-dateutil = []
 python-dotenv = []
@@ -2728,22 +3197,30 @@ rfc3339-validator = []
 rfc3986-validator = []
 rich = []
 rpds-py = []
+s3transfer = []
 safetensors = []
 scikit-learn = []
 scipy = []
 semver = []
 send2trash = []
 sentence-transformers = []
+sentencepiece = []
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 smmap = []
 sniffio = []
+sortedcontainers = [
+    {file = "sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"},
+    {file = "sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"},
+]
 soupsieve = []
+sparse = []
 stack-data = []
 streamlit = []
 sympy = []
+tblib = []
 terminado = []
 threadpoolctl = []
 tiktoken = []
@@ -2765,6 +3242,7 @@ traitlets = []
 transformers = []
 triton = []
 types-python-dateutil = []
+types-requests = []
 typing-extensions = []
 tzdata = []
 tzlocal = []
@@ -2782,4 +3260,5 @@ websocket-client = []
 widgetsnbextension = []
 xxhash = []
 yarl = []
+zict = []
 zipp = []

@@ -4,7 +4,9 @@ import re
 from datetime import datetime
 
 import openai
-import pinecone
+# import pinecone
+from pinecone import Pinecone, ServerlessSpec
+
 import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI
@@ -27,21 +29,39 @@ INDEX_NAME = 'semantic-search'
 ENGINE = 'text-embedding-ada-002'
 
 if pinecone_key:
-    pinecone.init(api_key=pinecone_key, environment="us-west1-gcp")
+    # pinecone.init(api_key=pinecone_key, environment="us-west1-gcp")
 
-    if not INDEX_NAME in pinecone.list_indexes():
-        pinecone.create_index(
-            INDEX_NAME,  # The name of the index to create.
-            dimension=1536,  # The dimensionality of the vectors that will be indexed.
-            metric='cosine',  # The similarity metric to use when searching the index.
-            pod_type="p1"  # The type of Pinecone pod to use for hosting the index (in this case, a p1 pod).
+    pc = Pinecone(api_key=pinecone_key)
+
+    # if not INDEX_NAME in pinecone.list_indexes():
+    #     pinecone.create_index(
+    #         INDEX_NAME,  # The name of the index to create.
+    #         dimension=1536,  # The dimensionality of the vectors that will be indexed.
+    #         metric='cosine',  # The similarity metric to use when searching the index.
+    #         pod_type="p1"  # The type of Pinecone pod to use for hosting the index (in this case, a p1 pod).
+    #     )
+    #     print('Pinecone index created')
+    # else:
+    #     print('Pinecone index already exists')
+
+    if not INDEX_NAME in pc.list_indexes().names():
+        pc.create_index(
+            INDEX_NAME,  # The name of the index
+            dimension=1536,  # The dimensionality of the vectors
+            metric='cosine',  # The similarity metric to use when searching the index
+            # pod_type="p1"  # The type of Pinecone pod
+            spec=ServerlessSpec(
+                cloud='aws', 
+                region='us-east-1'
+            ) 
         )
         print('Pinecone index created')
     else:
         print('Pinecone index already exists')
 
     # Store the index as a variable
-    index = pinecone.Index(INDEX_NAME)
+    # index = pinecone.Index(INDEX_NAME)
+    index = pc.Index(INDEX_NAME)
 
 
 def my_hash(s):
